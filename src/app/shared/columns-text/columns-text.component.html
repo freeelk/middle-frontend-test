@@ -1,7 +1,18 @@
-<h1>{{book?.Title}}</h1>
+<!--<h1>{{book?.Title}}</h1>
 <h4>Date: {{book?.PublishDate | date: 'short'}}  Pages: {{book?.PageCount}}</h4>
 <p>{{book?.Description}}</p>
 
 <div class="text-multi-columns"  [ngStyle]="getColumnsStyles()">
   {{book?.Excerpt}}
+</div>-->
+
+<div class="card book-card">
+  <div class="card-body">
+    <h5 class="card-title">{{book?.Title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Date: {{book?.PublishDate | date: 'short'}}  Pages: {{book?.PageCount}}</h6>
+    <div class="book-description">{{book?.Description}}</div>
+    <div class="text-multi-columns"  [ngStyle]="getColumnsStyles()">
+      {{book?.Excerpt}}
+    </div>
+  </div>
 </div>
