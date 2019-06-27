@@ -1,0 +1,7 @@
+<h1>{{book?.Title}}</h1>
+<h4>Date: {{book?.PublishDate | date: 'short'}}  Pages: {{book?.PageCount}}</h4>
+<p>{{book?.Description}}</p>
+
+<div class="text-multi-columns"  [ngStyle]="getColumnsStyles()">
+  {{book?.Excerpt}}
+</div>

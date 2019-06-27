@@ -1,3 +1,2 @@
-<p>
-  products works!
-</p>
+<app-alert [show]="dataRetrieveError" [message]="errorMessage"></app-alert>
+<app-columns-text *ngFor="let book of books"  [book]="book" [columnsCount]="4"></app-columns-text>

@@ -1,4 +1,4 @@
+<app-alert [show]="dataRetrieveError" [message]="errorMessage"></app-alert>
 <p>
-  home works!
-  {{books | json}}
+  <app-columns-text *ngFor="let book of books"  [book]="book" [columnsCount]="3"></app-columns-text>
 </p>

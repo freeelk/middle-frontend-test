@@ -1,0 +1,11 @@
+.text-multi-columns {
+  padding-bottom:20px;
+  width:100%;
+  text-align:justify;
+  column-gap: 40px;
+  -moz-column-gap: 40px;
+  -webkit-column-gap: 40px;
+  column-rule: 1px solid #000;
+  -moz-column-rule: 1px solid #000;
+  -webkit-column-rule: 1px solid #000;
+}

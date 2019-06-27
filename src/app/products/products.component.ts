@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Book} from '../models/book';
+import {BooksService} from '../books.service';
 
 @Component({
   selector: 'app-products',
@@ -6,10 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  books: Book[];
 
-  constructor() { }
+  errorMessage = '';
+  dataRetrieveError = false;
+
+  constructor(private booksService: BooksService) { }
 
   ngOnInit() {
+    this.booksService.getList()
+      .subscribe((response) => {
+          this.books = response;
+          this.errorMessage = '';
+          this.dataRetrieveError = false;
+        },
+        error => {
+          this.errorMessage = error;
+          this.dataRetrieveError = true;
+        });
   }
 
 }

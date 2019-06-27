@@ -7,6 +7,7 @@ import {ProductsModule} from './products/products.module';
 const routes: Routes = [
   // { path: '', loadChildren: '/app/home/home.module#HomeModule'},
   { path: '', loadChildren: () => HomeModule},
+  { path: 'home', loadChildren: () => HomeModule},
   // { path: 'products', loadChildren: '/app/products/products.module#ProductsModule'},
   { path: 'products', loadChildren: () => ProductsModule},
   { path: '**', component: NotFoundComponent }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BooksService} from '../books.service';
+import {Book} from '../models/book';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +8,9 @@ import {BooksService} from '../books.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  books;
+  books: Book[];
+  dataRetrieveError = false;
+  errorMessage = '';
 
   constructor(private booksService: BooksService) { }
 
@@ -16,9 +18,12 @@ export class HomeComponent implements OnInit {
     this.booksService.getList()
       .subscribe((response) => {
           this.books = response;
+          this.errorMessage = '';
+          this.dataRetrieveError = false;
         },
         error => {
-          console.log(error);
+          this.errorMessage = error;
+          this.dataRetrieveError = true;
         });
   }
 }

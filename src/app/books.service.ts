@@ -1,17 +1,35 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {Book} from './models/book';
+import {catchError,  map} from 'rxjs/internal/operators';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class BooksService {
-  private url = 'https://fakerestapi.azurewebsites.net/api/Books';
+  private url = 'https://fakerestapi.azurewebsites.net/api/Booksjk';
 
   constructor(private http: HttpClient) { }
 
-  getList() {
-    return this.http.get(this.url);
+  getList(): Observable<Book[] | never> {
+    return this.http.get(this.url).pipe(
+      map(data => {
+        const d = data as Book[];
+        d.map(book => {
+          const b: Book = book as Book;
+          b.PublishDate = new Date(b.PublishDate);
+          return b;
+        });
+        return d;
+      }),
+      catchError(this.handleError));
   }
+
+  handleError(errorResponse: HttpErrorResponse): Observable<never> {
+    return throwError(errorResponse.message);
+  }
+
 
 }
