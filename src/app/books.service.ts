@@ -4,12 +4,14 @@ import {Observable, throwError} from 'rxjs';
 import {Book} from './models/book';
 import {catchError,  map} from 'rxjs/internal/operators';
 
-
+/**
+ * Получение данных с сервера
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class BooksService {
-  private url = 'https://fakerestapi.azurewebsites.net/api/Booksjk';
+  private url = 'https://fakerestapi.azurewebsites.net/api/Books';
 
   constructor(private http: HttpClient) { }
 
@@ -27,9 +29,11 @@ export class BooksService {
       catchError(this.handleError));
   }
 
+  /**
+   * Обработка ошибок
+   */
   handleError(errorResponse: HttpErrorResponse): Observable<never> {
     return throwError(errorResponse.message);
   }
-
 
 }

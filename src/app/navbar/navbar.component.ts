@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Навигация
+ */
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',

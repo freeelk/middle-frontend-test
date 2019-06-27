@@ -1,5 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 
+/**
+ * Отображение сообщения об ошибке
+ */
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',

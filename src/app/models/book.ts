@@ -1,3 +1,6 @@
+/**
+ * Структура элемента данных, получаемых с сервера
+ */
 export interface Book {
   ID: number;
   Title: string;
